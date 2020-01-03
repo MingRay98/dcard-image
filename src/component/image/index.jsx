@@ -12,7 +12,9 @@ class pet extends Component {
   }
 
   componentDidMount() {
-    fetch("https://www.dcard.tw/_api/forums/pet/posts?popular=true", {
+    const url = `https://www.dcard.tw/_api/forums/${this.props.type}/posts?popular=true`
+    console.log(url)
+    fetch(url, {
       mode: "cors"
     })
       .then(res => res.json())
