@@ -12,30 +12,28 @@ class App extends Component {
 
   getPages = () => {
     return (
-      <Router>
-        <Switch>
-          <Route path="/pet" render={(props) => <AsyncImage {...props} type={this.state.type} />} />
-        </Switch>
-      </Router>
+      <AsyncImage  type={this.state.type} />
     )
   }
 
   getTypes = (para) => {
-    this.setState((ps) => ({...ps, type: para}),()=>{})
+    this.setState((ps) => ({...ps, type: para}))
   }
 
   getNavbar = () => {
     return (
-      <div>
-        <a className='NavButton' onClick={()=>this.getTypes('pet')} href='/pet'>寵物</a>
-        <div>美妝</div>
+      <div className='NavBar'>
+        <div className='NavButton' onClick={() => this.getTypes('pet')} >寵物</div>
+        <div className='NavButton' onClick={() => this.getTypes('relationship')} >感情</div>
+        <div className='NavButton' onClick={() => this.getTypes('acg')} >動漫</div>
+        <div className='NavButton' onClick={() => this.getTypes('mood')} >心情</div>
       </div>
     )
   }
 
   render() {
     return (
-      <div>
+      <div style={{display: 'flex'}}>
         <div className='NavContainer'>
           {this.getNavbar()}
         </div>

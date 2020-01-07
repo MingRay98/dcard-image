@@ -11,8 +11,24 @@ class pet extends Component {
     };
   }
 
-  componentDidMount() {
-    const url = `https://www.dcard.tw/_api/forums/${this.props.type}/posts?popular=true`
+  getExcerpt = (e) => {
+    const element = e.target.parentElement.parentElement.parentElement.childNodes[2]
+    console.log(element)
+    let x = e.clientX + document.body.scrollLeft + 20;
+    let y = e.clientY + document.body.scrollTop - 5;
+    element.style.left = x + "px";
+    element.style.top = y + "px";
+    element.style.display = "block";
+  }
+
+  outExcerpt = (e) => {
+    const element = e.target.parentElement.parentElement.parentElement.childNodes[2]
+    element.style.display = "none";
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState((ps) => ({...ps, items: [], loading: true}));
+    const url = `https://www.dcard.tw/_api/forums/${nextProps.type}/posts?popular=true`
     console.log(url)
     fetch(url, {
       mode: "cors"
@@ -41,12 +57,21 @@ class pet extends Component {
     return (
       <div style={styles.container}>
         {loading && <div style={styles.loading} >Loading...</div>}
-        {error && <div>Error: {error.message}</div>}
-        {items[0] && items[0].map(post => post.media.map(imgData =>
-          <div style={styles.imageDiv}>
-            <img style={styles.imageContainer} alt="" src={imgData.url} />
-          </div>
-        ))}
+        {!loading && error && <div>Error: {error.message}</div>}
+        {!loading && !error && items[0] && items[0].map(post =>
+          <div style={styles.postContainer}>
+            <div style={styles.postTitle}>{post.title}</div>
+            {post.media.map(imgData =>
+              <div>
+                <div style={styles.imageDiv}>
+                  <a href={`https://www.dcard.tw/f/${this.props.type}/p/${post.id}`} target="_blank">
+                    <img style={styles.imageContainer} alt="" src={imgData.url} />
+                  </a>
+                </div>
+                <div style={{display: 'none', position: 'absolute'}}>{post.excerpt}</div>
+              </div>
+            )}
+          </div>)}
       </div>
     );
   }
