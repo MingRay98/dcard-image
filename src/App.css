@@ -1,3 +1,8 @@
+.container {
+  background-color: rgb(0, 0, 0, 0.7);
+  display: flex;
+}
+
 .NavContainer {
   left: 0px;
   display: flex;
@@ -5,15 +10,45 @@
   width: fit-content;
   height: fit-content;
   background-color: cadetblue;
+  border-radius: 0px 60px 60px 14px/0px 90px 90px 0px;
 }
+
 .NavBar {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
   height: 100vh;
+  position: relative;
 }
+
+.closeButton {
+  position: absolute;
+  background-image: url('./asset/back.png');
+  width: 25px;
+  height: 25px;
+  right: -13px;
+  background-size: contain;
+}
+
 .NavButton {
+  font-family: '微軟正黑體';
   color: aliceblue;
-  font-size: xx-large;
+  font-size: 2rem;
   text-decoration: none;
+  font-size: 50px;
+  background-color: rgb(153, 109, 109);
+  text-shadow: rgb(71, 71, 71) 3px 5px 2px;
+  border: darkgoldenrod 0.5px solid;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.NavButton:hover {
+  box-shadow: -5px 9px 14px 0px black;
+}
+
+@media only screen and (max-width: 600px) {
+  .NavButton {
+    font-size: 1.5rem;
+  }
 }

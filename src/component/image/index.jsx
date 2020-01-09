@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import Radium, {StyleRoot} from 'radium';
 import styles from './styles'
 
 class pet extends Component {
@@ -27,6 +28,13 @@ class pet extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    this.getDcardAPIPost(nextProps)
+  }
+  componentDidMount() {
+    this.getDcardAPIPost()
+  }
+
+  getDcardAPIPost = (nextProps=this.props) => {
     this.setState((ps) => ({...ps, items: [], loading: true}));
     const url = `https://www.dcard.tw/_api/forums/${nextProps.type}/posts?popular=true`
     console.log(url)
@@ -58,13 +66,16 @@ class pet extends Component {
       <div style={styles.container}>
         {loading && <div style={styles.loading} >Loading...</div>}
         {!loading && error && <div>Error: {error.message}</div>}
-        {!loading && !error && items[0] && items[0].map(post =>
-          <div style={styles.postContainer}>
-            <div style={styles.postTitle}>{post.title}</div>
+        {console.log(items)}
+        {!loading && !error && items && !items[0].error && items[0].map(post =>
+          <div style={styles.postContainer} key={post.createdAt}>
+            <div style={styles.postTitle} key={post.id} onClick={() => window.open(`https://www.dcard.tw/f/${this.props.type}/p/${post.id}`)} target="_blank">
+              {post.title}
+            </div>
             {post.media.map(imgData =>
               <div>
-                <div style={styles.imageDiv}>
-                  <a href={`https://www.dcard.tw/f/${this.props.type}/p/${post.id}`} target="_blank">
+                <div key={imgData.url} style={styles.imageDiv}>
+                  <a href={imgData.url} target="_blank">
                     <img style={styles.imageContainer} alt="" src={imgData.url} />
                   </a>
                 </div>
@@ -77,4 +88,4 @@ class pet extends Component {
   }
 }
 
-export default pet;
+export default Radium(pet);
