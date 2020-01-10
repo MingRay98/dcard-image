@@ -1,24 +1,25 @@
 {
   "files": {
-    "main.css": "/dcard-image/static/css/main.26675d6e.chunk.css",
-    "main.js": "/dcard-image/static/js/main.36d9938d.chunk.js",
-    "main.js.map": "/dcard-image/static/js/main.36d9938d.chunk.js.map",
-    "runtime-main.js": "/dcard-image/static/js/runtime-main.63dc825d.js",
-    "runtime-main.js.map": "/dcard-image/static/js/runtime-main.63dc825d.js.map",
+    "main.css": "/dcard-image/static/css/main.f79a3533.chunk.css",
+    "main.js": "/dcard-image/static/js/main.cb04d568.chunk.js",
+    "main.js.map": "/dcard-image/static/js/main.cb04d568.chunk.js.map",
+    "runtime-main.js": "/dcard-image/static/js/runtime-main.d96be5ef.js",
+    "runtime-main.js.map": "/dcard-image/static/js/runtime-main.d96be5ef.js.map",
     "static/js/2.79b36763.chunk.js": "/dcard-image/static/js/2.79b36763.chunk.js",
     "static/js/2.79b36763.chunk.js.map": "/dcard-image/static/js/2.79b36763.chunk.js.map",
-    "static/js/3.568be1ca.chunk.js": "/dcard-image/static/js/3.568be1ca.chunk.js",
-    "static/js/3.568be1ca.chunk.js.map": "/dcard-image/static/js/3.568be1ca.chunk.js.map",
+    "static/js/3.5265fcf6.chunk.js": "/dcard-image/static/js/3.5265fcf6.chunk.js",
+    "static/js/3.5265fcf6.chunk.js.map": "/dcard-image/static/js/3.5265fcf6.chunk.js.map",
     "index.html": "/dcard-image/index.html",
-    "precache-manifest.4cd2e87c030f4eb55a1ef9f4ffb93b92.js": "/dcard-image/precache-manifest.4cd2e87c030f4eb55a1ef9f4ffb93b92.js",
+    "precache-manifest.6d331222b50842fdc7c4053563d8c1a4.js": "/dcard-image/precache-manifest.6d331222b50842fdc7c4053563d8c1a4.js",
     "service-worker.js": "/dcard-image/service-worker.js",
-    "static/css/main.26675d6e.chunk.css.map": "/dcard-image/static/css/main.26675d6e.chunk.css.map",
-    "static/media/App.css": "/dcard-image/static/media/back.8613756e.png"
+    "static/css/main.f79a3533.chunk.css.map": "/dcard-image/static/css/main.f79a3533.chunk.css.map",
+    "static/media/App.css": "/dcard-image/static/media/back.8613756e.png",
+    "static/media/index.css": "/dcard-image/static/media/loading.8d483e90.gif"
   },
   "entrypoints": [
-    "static/js/runtime-main.63dc825d.js",
+    "static/js/runtime-main.d96be5ef.js",
     "static/js/2.79b36763.chunk.js",
-    "static/css/main.26675d6e.chunk.css",
-    "static/js/main.36d9938d.chunk.js"
+    "static/css/main.f79a3533.chunk.css",
+    "static/js/main.cb04d568.chunk.js"
   ]
 }
