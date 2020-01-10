@@ -30,7 +30,7 @@ export default {
   postTitle: {
     width: 'inherit',
     textAlign: 'center',
-    margin: '5%',
+    margin: '2%',
     color: 'darkred',
     fontSize: '150%',
     fontFamily: '微軟正黑體',
@@ -41,12 +41,10 @@ export default {
     }
   },
   imageDiv: {
-    margin: '5% 0',
-    borderRadius: '1rem',
+    margin: '0 0 8%',
     width: 'auto',
     maxWidth: '60vw',
     height: '25vw',
-    border: 'solid',
     overflow: 'hidden',
     ':hover': {
       boxShadow: '-5px 9px 14px 0px black',
@@ -60,7 +58,9 @@ export default {
     width: 'auto',
     height: '25vw',
     margin: 'auto',
+    objectFit: 'contain',
     '@media only screen and (max-width: 550px)': {
+      width: '60vw',
       height: '65vw',
     }
   },postExcerpt:{

@@ -12,6 +12,7 @@ class App extends Component {
     this.state = {
       type: '',
       redirect: false,
+      car: false,
     };
     this.menuOpened = true;
     this.ref = null;
@@ -52,6 +53,12 @@ class App extends Component {
     }
   }
 
+  handleSubmit = (event) => {
+    event.preventDefault();
+    (event.target.querySelector('input').value === '2000' || event.target.querySelector('input').value === 'sex') &&
+      this.setState((ps) => ({...ps, car: true}), alert('開車成功'))
+  }
+
   getNavbar = () => {
     return (
       <div>
@@ -75,6 +82,13 @@ class App extends Component {
           <div className='NavButton' onClick={() => this.getTypes("food")} >食物</div>
           <div className='NavButton' onClick={() => this.getTypes("entertainer")} >追星</div>
           <div className='NavButton' onClick={() => this.getTypes("trending")} >時事</div>
+          {this.state.car && <div className='NavButton' onClick={() => this.getTypes("sex")} >西斯</div>}
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              <input type="text" value={this.state.value} onChange={this.handleChange} style={{width: '10vw', maxWidth: '125px', margin: '2%', borderRadius: '10px'}} />
+            </label>
+            <button className='NavButton' type="submit" >GO</button>
+          </form>
         </div>
       </div >
     )
@@ -84,13 +98,15 @@ class App extends Component {
     return (
       <Router>
         <StyleRoot>
-          {this.getHomePage()}
-          <div className='container'>
-            <div className='NavContainer'>
-              {this.getNavbar()}
+          <div className='topContainer'>
+            <TopHeader />
+            <div className='container'>
+              <div className='NavContainer'>
+                {this.getNavbar()}
+              </div>
+              {this.getRedirect()}
+              {this.getPages()}
             </div>
-            {this.getRedirect()}
-            {this.getPages()}
           </div>
         </StyleRoot>
       </Router>

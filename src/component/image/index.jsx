@@ -60,6 +60,17 @@ class pet extends Component {
       );
   }
 
+  loaded = (e) => {
+    e.style.background = 'none';
+  }
+
+  handleImageLoad = (e) => {
+    e.target.addEventListener('load', this.loaded(e.target))
+    e.target.addEventListener('error', function () {
+      alert('error')
+    })
+  }
+
   render() {
     const {error, loading, items} = this.state;
     return (
@@ -71,16 +82,16 @@ class pet extends Component {
             <div style={styles.postTitle} key={post.id} onClick={() => window.open(`https://www.dcard.tw/f/${this.props.type}/p/${post.id}`)} target="_blank">
               {post.title}
             </div>
-            {post.media.map(imgData =>
+            {post.media.map((imgData, index) =>
               <div>
-                <div key={imgData.url} style={styles.imageDiv}>
+                <div key={imgData.url + index} style={styles.imageDiv}>
                   <a style={{display: 'flex'}} href={imgData.url} target="_blank">
-                    <img style={styles.imageContainer} alt="" src={imgData.url} />
+                    <img style={styles.imageContainer} alt="" src={imgData.url} onLoad={(e) => this.handleImageLoad(e)} />
                   </a>
                 </div>
               </div>
             )}
-            {!!!post.media === false && <div style={styles.postExcerpt} >{post.excerpt}... <div style={{color: 'red'}} onClick={()=>alert('騙你的，你要點標題')}>(閱覽全部)</div></div>}
+            {!!!post.media === false && post.excerpt != false && <div style={styles.postExcerpt} >{post.excerpt}... <div style={{color: 'red'}} onClick={() => alert('騙你的，你要點標題')}>(閱覽全部)</div></div>}
           </div>)}
       </div>
     );
