@@ -61,9 +61,20 @@ class App extends Component {
         <div className='NavBar' ref={intput => this.ref = intput}>
           <div className='closeButton' onClick={() => this.openMenu()} />
           <div className='NavButton' onClick={() => this.getTypes('pet')} >寵物</div>
-          <div className='NavButton' onClick={() => this.getTypes('relationship')}  >感情</div>
-          <div className='NavButton' onClick={() => this.getTypes('acg')} >動漫</div>
+          <div className='NavButton' onClick={() => this.getTypes('show_cats')} >曬貓</div>
+          <div className='NavButton' onClick={() => this.getTypes('meme')} >Meme</div>
+          <div className='NavButton' onClick={() => this.getTypes('travel')} >旅遊</div>
           <div className='NavButton' onClick={() => this.getTypes('mood')} >心情</div>
+          <div className='NavButton' onClick={() => this.getTypes('acg')} >動漫</div>
+          <div className='NavButton' onClick={() => this.getTypes("illustration")} >插畫</div>
+          <div className='NavButton' onClick={() => this.getTypes('cosplay')} >COS</div>
+          <div className='NavButton' onClick={() => this.getTypes('makeup')} >美妝</div>
+          <div className='NavButton' onClick={() => this.getTypes('dressup')} >穿搭</div>
+          <div className='NavButton' onClick={() => this.getTypes("otokonoko")} >偽娘</div>
+          <div className='NavButton' onClick={() => this.getTypes("photography")} >攝影</div>
+          <div className='NavButton' onClick={() => this.getTypes("food")} >食物</div>
+          <div className='NavButton' onClick={() => this.getTypes("entertainer")} >追星</div>
+          <div className='NavButton' onClick={() => this.getTypes("trending")} >時事</div>
         </div>
       </div >
     )
@@ -73,12 +84,12 @@ class App extends Component {
     return (
       <Router>
         <StyleRoot>
+          {this.getHomePage()}
           <div className='container'>
             <div className='NavContainer'>
               {this.getNavbar()}
             </div>
             {this.getRedirect()}
-            {this.getHomePage()}
             {this.getPages()}
           </div>
         </StyleRoot>

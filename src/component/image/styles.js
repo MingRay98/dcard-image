@@ -1,8 +1,8 @@
 export default {
   container: {
     display: 'flex',
-    width: '75vw',
-    height: '100vh',
+    width: '85vw',
+    height: '90vh',
     flexWrap: 'wrap',
     margin: 'auto',
     justifyContent: 'space-around',
@@ -20,12 +20,12 @@ export default {
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     backgroundColor: 'wheat',
-    margin: '5%',
+    margin: '2%',
     borderRadius: '50px',
     width: '100%',
     ':hover': {
       boxShadow: '-5px 9px 14px 0px black',
-    }
+    },
   },
   postTitle: {
     width: 'inherit',
@@ -42,19 +42,18 @@ export default {
   },
   imageDiv: {
     margin: '5% 0',
-    borderRadius: '3rem',
+    borderRadius: '1rem',
     width: 'auto',
     maxWidth: '60vw',
     height: '25vw',
     border: 'solid',
     overflow: 'hidden',
-    display: 'flex',
-    justifyContent: 'center',
     ':hover': {
       boxShadow: '-5px 9px 14px 0px black',
     },
     '@media only screen and (max-width: 550px)': {
-      height: '50vw',
+      width: 'auto',
+      height: 'auto',
     },
   },
   imageContainer: {
@@ -62,7 +61,12 @@ export default {
     height: '25vw',
     margin: 'auto',
     '@media only screen and (max-width: 550px)': {
-      height: '50vw',
+      height: '65vw',
     }
-  },
+  },postExcerpt:{
+    margin: '0 5% 5% 5%',
+    fontSize: '125%',
+    fontFamily: '微軟正黑體',
+    fontWeight: 'bold',
+  }
 }

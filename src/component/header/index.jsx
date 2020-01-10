@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import Radium from 'radium';
+import styles from './styles'
+
 class index extends Component {
   constructor(props) {
     super(props);
@@ -6,9 +9,9 @@ class index extends Component {
   }
   render() {
     return (
-      <div>黑得</div>
+      <div style={styles.container}>Dcard-Image Reader</div>
     );
   }
 }
 
-export default index;
+export default Radium(index);
