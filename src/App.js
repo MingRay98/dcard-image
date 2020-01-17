@@ -25,7 +25,7 @@ class App extends Component {
   getPages = () => {
     return (
       <Switch>
-        <Route path="/popular" render={(props) => <AsyncImage {...props} type={this.state.type} />} />
+        <Route path={`/${this.state.type}/popular`} render={(props) => <AsyncImage {...props} type={this.state.type} />} />
       </Switch>
     )
   }
@@ -49,7 +49,7 @@ class App extends Component {
 
   getRedirect = () => {
     if (this.state.redirect) {
-      return <Redirect to='/popular' />;
+      return <Redirect to={`/${this.state.type}/popular`} />;
     }
   }
 
@@ -57,6 +57,34 @@ class App extends Component {
     event.preventDefault();
     (event.target.querySelector('input').value === '2000' || event.target.querySelector('input').value === 'sex') &&
       this.setState((ps) => ({...ps, car: true}), alert('開車成功'))
+  }
+
+  fbShare = () => {
+    window.FB.ui({
+      method: 'share_open_graph',
+      action_type: 'og.shares',
+      action_properties: JSON.stringify({
+        object: {
+          'og:url': 'https://mingray98.github.io/dcard-image/',
+          'og:title': 'OG Title',
+          'og:description': 'OG Description',
+          'og:image': 'https://mingray98.github.io/dcard-image/static/media/back.8613756e.png',
+          'og:image:width': '512',
+          'og:image:height': '512',
+          'og:image:type': 'image/png'
+        }
+      })
+
+    },
+      // callback
+      function (response) {
+        if (response && !response.error_message) {
+          // then get post content
+          alert('successfully posted. Status id : ' + response.post_id);
+        } else {
+          alert('Something went error.');
+        }
+      });
   }
 
   getNavbar = () => {
@@ -67,7 +95,7 @@ class App extends Component {
           onClick={() => this.openMenu()} />
         <div className='NavBar' ref={intput => this.ref = intput}>
           <div className='closeButton' onClick={() => this.openMenu()} />
-          <div className='NavButton' onClick={() => this.getTypes('pet')} >寵物</div>
+          <div className='NavButton' style={{marginTop: '65%'}} onClick={() => this.getTypes('pet')} >寵物</div>
           <div className='NavButton' onClick={() => this.getTypes('show_cats')} >曬貓</div>
           <div className='NavButton' onClick={() => this.getTypes('meme')} >Meme</div>
           <div className='NavButton' onClick={() => this.getTypes('travel')} >旅遊</div>
@@ -82,10 +110,11 @@ class App extends Component {
           <div className='NavButton' onClick={() => this.getTypes("food")} >食物</div>
           <div className='NavButton' onClick={() => this.getTypes("entertainer")} >追星</div>
           <div className='NavButton' onClick={() => this.getTypes("trending")} >時事</div>
+          <div className='NavButton' onClick={() => this.fbShare()} >666</div>
           {this.state.car && <div className='NavButton' onClick={() => this.getTypes("sex")} >西斯</div>}
           <form onSubmit={this.handleSubmit}>
             <label>
-              <input type="text" value={this.state.value} onChange={this.handleChange} style={{width: '10vw', maxWidth: '125px', margin: '2%', borderRadius: '10px'}} />
+              <input type="text" value={this.state.value} onChange={this.handleChange} style={{width: '10vw', maxWidth: '80px', margin: '2%', borderRadius: '10px'}} />
             </label>
             <button className='NavButton' type="submit" >GO</button>
           </form>

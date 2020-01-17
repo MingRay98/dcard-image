@@ -35,7 +35,7 @@ class pet extends Component {
   }
 
   getDcardAPIPost = (nextProps = this.props) => {
-    this.setState((ps) => ({...ps, items: [], loading: true}));
+    this.setState((ps) => ({...ps, items: [], error: null, loading: true}));
     const url = `https://www.dcard.tw/_api/forums/${nextProps.type}/posts?popular=true`
     console.log(url)
     fetch(url, {
@@ -79,8 +79,13 @@ class pet extends Component {
         {!loading && error && <div>Error: {error.message}</div>}
         {!loading && !error && items && !items[0].error && items[0].map(post =>
           <div style={styles.postContainer} key={post.createdAt}>
-            <div style={styles.postTitle} key={post.id} onClick={() => window.open(`https://www.dcard.tw/f/${this.props.type}/p/${post.id}`)} target="_blank">
+            <div style={styles.postTitle} key={post.id}
+              onClick={() => window.open(`https://www.dcard.tw/f/${this.props.type}/p/${post.id}`)} target="_blank">
               {post.title}
+              <div style={styles.school} key={'Name_' + post.id}>{ window.innerWidth < 600 && <br/>}
+                {post.anonymousSchool === false && post.school} {post.anonymousDepartment === false && post.department}
+                <div style={{color: 'red', fontStyle: 'normal'}} key={'love_' + post.id}> {"　"+post.likeCount} ❤ </div>
+              </div>
             </div>
             {post.media.map((imgData, index) =>
               <div>
@@ -91,7 +96,7 @@ class pet extends Component {
                 </div>
               </div>
             )}
-            {!!!post.media === false && post.excerpt != false && <div style={styles.postExcerpt} >{post.excerpt}... <div style={{color: 'red'}} onClick={() => alert('騙你的，你要點標題')}>(閱覽全部)</div></div>}
+            {post.withImages === false && post.excerpt != false && <div style={styles.postExcerpt} >{post.excerpt}... <div style={{color: 'red'}} onClick={() => alert('騙你的，你要點標題')}>(閱覽全部)</div></div>}
           </div>)}
       </div>
     );

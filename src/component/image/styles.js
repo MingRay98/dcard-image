@@ -21,7 +21,7 @@ export default {
     justifyContent: 'space-around',
     backgroundColor: 'wheat',
     margin: '2%',
-    borderRadius: '50px',
+    borderRadius: '25px',
     width: '100%',
     ':hover': {
       boxShadow: '-5px 9px 14px 0px black',
@@ -38,13 +38,28 @@ export default {
     cursor: 'pointer',
     ':hover': {
       color: 'black',
-    }
+    },
+    '@media only screen and (max-width: 550px)': {
+      fontSize: '110%',
+    },
+  },
+  school: {
+    width: 'fit-content',
+    color: 'black',
+    margin: '2%',
+    fontStyle: 'italic ',
+    fontSize: '70%',
+    fontFamily: 'inherit',
+    fontWeight: 'bold',
+    display: 'inline-flex',
+    '@media only screen and (max-width: 550px)': {
+      fontSize: '40%',
+    },
   },
   imageDiv: {
     margin: '0 0 8%',
     width: 'auto',
-    maxWidth: '60vw',
-    height: '25vw',
+    height: 'auto',
     overflow: 'hidden',
     ':hover': {
       boxShadow: '-5px 9px 14px 0px black',
@@ -56,17 +71,22 @@ export default {
   },
   imageContainer: {
     width: 'auto',
-    height: '25vw',
+    maxWidth: '60vw',
+    height: 'auto',
+    maxheight: '35vh',
     margin: 'auto',
     objectFit: 'contain',
     '@media only screen and (max-width: 550px)': {
-      width: '60vw',
-      height: '65vw',
+      maxWidth: '60vw',
+      maxheight: '65vh',
     }
-  },postExcerpt:{
+  }, postExcerpt: {
     margin: '0 5% 5% 5%',
     fontSize: '125%',
     fontFamily: '微軟正黑體',
     fontWeight: 'bold',
+    '@media only screen and (max-width: 550px)': {
+      fontSize: '95%'
+    },
   }
 }
