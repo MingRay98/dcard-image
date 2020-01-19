@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "804a52bed3ed92f000e12634a8bb6c12",
+    "revision": "ba5bb880cedc21cbebf9c7dc541148b9",
     "url": "/dcard-image/index.html"
   },
   {
