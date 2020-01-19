@@ -73,7 +73,7 @@ export default {
         width: 'auto',
         maxWidth: '60vw',
         height: 'auto',
-        maxheight: '35vh',
+        maxHeight: '35vh',
         margin: 'auto',
         objectFit: 'contain',
         borderRadius:'25px',
