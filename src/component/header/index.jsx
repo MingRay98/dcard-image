@@ -11,8 +11,8 @@ class index extends Component {
     return (
       <div style={styles.container}>
         <div>Dcard-Image Reader</div>
-        <label style={{fontSize: '12px'}}><input type="radio" name="color1" value="blue" />熱門</label>
-        <label style={{fontSize: '12px'}}><input type="radio" name="color1" value="blue" />最新</label>
+        {/* <label style={{fontSize: '12px'}}><input type="radio" name="color1" value="blue" />熱門</label>
+        <label style={{fontSize: '12px'}}><input type="radio" name="color1" value="blue" />最新</label> */}
       </div>
     );
   }

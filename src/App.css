@@ -1,69 +1,67 @@
 .topContainer {
-  display: flex;
-  flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .container {
-  background-color: rgb(0, 0, 0, 0.7);
-  display: flex;
-  flex-wrap: wrap;
-  width: 100vw;
-  height: calc(100vh - 10vw);
-  min-height: 90vh;
+    background-color: #00324E;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100vw;
+    height: calc(100vh - 10vw);
+    min-height: 90vh;
 }
 
 .NavContainer {
-  left: 0px;
-  display: flex;
-  justify-content: center;
-  width: fit-content;
-  height: fit-content;
-  background-color: cadetblue;
-  border-radius: 0px 60px 60px 14px/0px 90px 90px 0px;
+    left: 0px;
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    height: fit-content;
+    background-color: rgb(255, 255, 255, 0.1);
+    border-radius: 0px 60px 60px 14px/0px 90px 90px 0px;
 }
 
 .NavBar {
-  display: flex;
-  width: 15vw;
-  max-width: 100px;
-  justify-content: space-around;
-  flex-direction: column;
-  height: 90vh;
-  position: relative;
+    display: flex;
+    width: 15vw;
+    max-width: 100px;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 90vh;
+    position: relative;
 }
 
 .closeButton {
-  position: absolute;
-  background-image: url('./asset/back.png');
-  width: 5vh;
-  height: 5vh;
-  right: -5vh;
-  background-size: cover;
+    position: absolute;
+    background-image: url('./asset/back.png');
+    width: 5vh;
+    height: 5vh;
+    right: -5vh;
+    background-size: cover;
 }
 
 .NavButton {
-  display: flex;
-  justify-content: center;
-  font-family: '微軟正黑體';
-  color: aliceblue;
-  text-decoration: none;
-  font-size: 25px;
-  background-color: rgb(153, 109, 109);
-  text-shadow: rgb(71, 71, 71) 3px 5px 2px;
-  border: darkgoldenrod 0.5px solid;
-  border-radius: 10px;
-  cursor: pointer;
+    display: flex;
+    justify-content: center;
+    font-family: '微軟正黑體';
+    color: aliceblue;
+    text-decoration: none;
+    font-size: 25px;
+    background-color: #006AA6;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 .NavButton:hover {
-  box-shadow: -5px 9px 14px 0px black;
+    box-shadow: -5px 9px 14px 0px black;
 }
 
 @media only screen and (max-width: 600px) {
-  .NavButton {
-    font-size: 1rem;
-  }
-  .container{
-    height: 90vh;
-  }
+    .NavButton {
+        font-size: 1rem;
+    }
+    .container {
+        height: 90vh;
+    }
 }

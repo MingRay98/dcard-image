@@ -25,7 +25,7 @@ class App extends Component {
   getPages = () => {
     return (
       <Switch>
-        <Route path={`/${this.state.type}/popular`} render={(props) => <AsyncImage {...props} type={this.state.type} />} />
+        <Route path={`/dcard-image/`} render={(props) => <AsyncImage {...props} type={this.state.type} />} />
       </Switch>
     )
   }
@@ -49,14 +49,13 @@ class App extends Component {
 
   getRedirect = () => {
     if (this.state.redirect) {
-      return <Redirect to={`/${this.state.type}/popular`} />;
+      return <Redirect to={`/dcard-image/`} />;
     }
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
-    (event.target.querySelector('input').value === '2000' || event.target.querySelector('input').value === 'sex') &&
-      this.setState((ps) => ({...ps, car: true}), alert('開車成功'))
+    this.getTypes(event.target.querySelector('input').value)
   }
 
   fbShare = () => {
@@ -110,8 +109,7 @@ class App extends Component {
           <div className='NavButton' onClick={() => this.getTypes("food")} >食物</div>
           <div className='NavButton' onClick={() => this.getTypes("entertainer")} >追星</div>
           <div className='NavButton' onClick={() => this.getTypes("trending")} >時事</div>
-          <div className='NavButton' onClick={() => this.fbShare()} >666</div>
-          {this.state.car && <div className='NavButton' onClick={() => this.getTypes("sex")} >西斯</div>}
+          <div className='NavButton' onClick={() => this.fbShare()} >share</div>
           <form onSubmit={this.handleSubmit}>
             <label>
               <input type="text" value={this.state.value} onChange={this.handleChange} style={{width: '10vw', maxWidth: '80px', margin: '2%', borderRadius: '10px'}} />

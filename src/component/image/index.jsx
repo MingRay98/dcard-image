@@ -71,6 +71,21 @@ class pet extends Component {
     })
   }
 
+  getGenderStyle = (gender) => {
+    let style = {
+      width: '25px',
+      display: 'inline-block',
+      borderRadius: '50px',
+    }
+    gender === 'F' ? Object.assign(style,{
+      background: 'pink',
+    }) : Object.assign(style,{
+      background: 'blue',
+      color: 'white',
+    })
+    return style  
+  }
+
   render() {
     const {error, loading, items} = this.state;
     return (
@@ -81,7 +96,7 @@ class pet extends Component {
           <div style={styles.postContainer} key={post.createdAt}>
             <div style={styles.postTitle} key={post.id}
               onClick={() => window.open(`https://www.dcard.tw/f/${this.props.type}/p/${post.id}`)} target="_blank">
-              {post.title}
+              <div style={this.getGenderStyle(post.gender)}>{post.gender}</div>{post.title}
               <div style={styles.school} key={'Name_' + post.id}>{ window.innerWidth < 600 && <br/>}
                 {post.anonymousSchool === false && post.school} {post.anonymousDepartment === false && post.department}
                 <div style={{color: 'red', fontStyle: 'normal'}} key={'love_' + post.id}> {"　"+post.likeCount} ❤ </div>
