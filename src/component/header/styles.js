@@ -12,6 +12,7 @@ export default {
         backgroundColor: '#006AA6',
         color: 'white',
         fontWeight: 'bold',
+        cursor: 'pointer',
         '@media only screen and (max-width: 550px)': {
             fontSize: '24px',
         },

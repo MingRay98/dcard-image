@@ -32,11 +32,11 @@ class pet extends Component {
   }
 
   componentDidMount() {
-    if (window.location.pathname === '/')
+    if (window.location.pathname === '/dcard-image/')
       this.getDcardAPIPost('home');
     else {
-      let type = window.location.pathname.replace(/\//g, "");
-      this.getDcardAPIPost(type);
+      let type = window.location.pathname.split('/');
+      this.getDcardAPIPost(type[2]);
     }
   }
 
@@ -45,9 +45,8 @@ class pet extends Component {
   getDcardAPIPost = (nextProps) => {
     this.setState((ps) => ({...ps, items: [], error: null, loading: true}));
     let url = `https://script.google.com/macros/s/AKfycbxsSAtVNsiUD1W8tVVqwhxrHesDxBJlm4aXYkEnIHKyAZRIc68s/exec?url=https://www.dcard.tw/_api/forums/${nextProps}/posts?popular=true`
-    if (nextProps === 'home')
-      url = 'https://cors-anywhere.herokuapp.com/https://www.dcard.tw/_api/posts?popular=true';
-
+    if (nextProps === 'home' || nextProps === '')
+      url = 'https://script.google.com/macros/s/AKfycbxsSAtVNsiUD1W8tVVqwhxrHesDxBJlm4aXYkEnIHKyAZRIc68s/exec?url=https://www.dcard.tw/_api/posts?popular=true';
     fetch(url, {
       mode: "cors",
     })

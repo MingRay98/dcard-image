@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import Radium, {StyleRoot} from 'radium';
-import {BrowserRouter as Router, Route, Switch, Link, Redirect} from 'react-router-dom';
+import {BrowserRouter as Router, Redirect} from 'react-router-dom';
 import AsyncImage from './component/image/async';
 import TopHeader from './component/header';
 import './App.css';
@@ -39,9 +39,7 @@ class App extends Component {
   }
 
   getRedirect = () => {
-    if (this.state.redirect) {
-      return <Redirect to={`/${this.state.type}/`} />;
-    }
+    return <Redirect to={`/dcard-image/${this.state.type}`} />;
   }
 
   handleSubmit = (event) => {
@@ -117,7 +115,7 @@ class App extends Component {
       <Router>
         <StyleRoot>
           <div className='topContainer'>
-            <TopHeader />
+            <TopHeader getTypes={this.getTypes} />
             <div className='container'>
               <div className='NavContainer'>
                 {this.getNavbar()}
