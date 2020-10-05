@@ -46,7 +46,7 @@ class pet extends Component {
     this.setState((ps) => ({...ps, items: [], error: null, loading: true}));
     let url = `https://script.google.com/macros/s/AKfycbxsSAtVNsiUD1W8tVVqwhxrHesDxBJlm4aXYkEnIHKyAZRIc68s/exec?url=https://www.dcard.tw/_api/forums/${nextProps}/posts?popular=true`
     if (nextProps === 'home')
-      url = 'https://script.google.com/macros/s/AKfycbxsSAtVNsiUD1W8tVVqwhxrHesDxBJlm4aXYkEnIHKyAZRIc68s/exec?url=https://www.dcard.tw/_api/posts?popular=true';
+      url = 'https://cors-anywhere.herokuapp.com/https://www.dcard.tw/_api/posts?popular=true';
 
     fetch(url, {
       mode: "cors",
