@@ -40,14 +40,23 @@ class pet extends Component {
     }
   }
 
+
+
   getDcardAPIPost = (nextProps) => {
     this.setState((ps) => ({...ps, items: [], error: null, loading: true}));
     let url = `https://script.google.com/macros/s/AKfycbxsSAtVNsiUD1W8tVVqwhxrHesDxBJlm4aXYkEnIHKyAZRIc68s/exec?url=https://www.dcard.tw/_api/forums/${nextProps}/posts?popular=true`
     if (nextProps === 'home')
       url = 'https://script.google.com/macros/s/AKfycbxsSAtVNsiUD1W8tVVqwhxrHesDxBJlm4aXYkEnIHKyAZRIc68s/exec?url=https://www.dcard.tw/_api/posts?popular=true';
     console.log(url)
+
+    let myHeaders = new Headers({
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'text/plain'
+    });
+
     fetch(url, {
-      mode: "cors"
+      mode: "cors",
+      headers: myHeaders,
     })
       .then(res => res.json())
       .then(
@@ -96,7 +105,6 @@ class pet extends Component {
 
   render() {
     const {error, loading, items} = this.state;
-    console.log(items)
     return (
       <div style={styles.container}>
         {loading && <div style={styles.loading} >Loading...</div>}
