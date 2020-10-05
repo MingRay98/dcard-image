@@ -28,15 +28,23 @@ class pet extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.getDcardAPIPost(nextProps)
-  }
-  componentDidMount() {
-    this.getDcardAPIPost()
+    this.getDcardAPIPost(nextProps.type)
   }
 
-  getDcardAPIPost = (nextProps = this.props) => {
+  componentDidMount() {
+    if (window.location.pathname === '/')
+      this.getDcardAPIPost('home');
+    else {
+      let type = window.location.pathname.replace(/\//g, "");
+      this.getDcardAPIPost(type);
+    }
+  }
+
+  getDcardAPIPost = (nextProps) => {
     this.setState((ps) => ({...ps, items: [], error: null, loading: true}));
-    const url = `https://www.dcard.tw/_api/forums/${nextProps.type}/posts?popular=true`
+    let url = `https://script.google.com/macros/s/AKfycbxsSAtVNsiUD1W8tVVqwhxrHesDxBJlm4aXYkEnIHKyAZRIc68s/exec?url=https://www.dcard.tw/_api/forums/${nextProps}/posts?popular=true`
+    if (nextProps === 'home')
+      url = 'https://script.google.com/macros/s/AKfycbxsSAtVNsiUD1W8tVVqwhxrHesDxBJlm4aXYkEnIHKyAZRIc68s/exec?url=https://www.dcard.tw/_api/posts?popular=true';
     console.log(url)
     fetch(url, {
       mode: "cors"
@@ -77,33 +85,36 @@ class pet extends Component {
       display: 'inline-block',
       borderRadius: '50px',
     }
-    gender === 'F' ? Object.assign(style,{
+    gender === 'F' ? Object.assign(style, {
       background: 'pink',
-    }) : Object.assign(style,{
+    }) : Object.assign(style, {
       background: 'blue',
       color: 'white',
     })
-    return style  
+    return style
   }
 
   render() {
     const {error, loading, items} = this.state;
+    console.log(items)
     return (
       <div style={styles.container}>
         {loading && <div style={styles.loading} >Loading...</div>}
+        {!loading && this.props.type && <div style={styles.loading} >{this.props.type}</div>}
+        {!loading && !this.props.type && <div style={styles.loading} >即時熱門文章</div>}
         {!loading && error && <div>Error: {error.message}</div>}
         {!loading && !error && items && !items[0].error && items[0].map(post =>
           <div style={styles.postContainer} key={post.createdAt}>
             <div style={styles.postTitle} key={post.id}
-              onClick={() => window.open(`https://www.dcard.tw/f/${this.props.type}/p/${post.id}`)} target="_blank">
+              onClick={() => window.open(`https://www.dcard.tw/f/${post.forumAlias}/p/${post.id}`)} target="_blank">
               <div style={this.getGenderStyle(post.gender)}>{post.gender}</div>{post.title}
-              <div style={styles.school} key={'Name_' + post.id}>{ window.innerWidth < 600 && <br/>}
+              <div style={styles.school} key={'Name_' + post.id}>{window.innerWidth < 600 && <br />}
                 {post.anonymousSchool === false && post.school} {post.anonymousDepartment === false && post.department}
-                <div style={{color: 'red', fontStyle: 'normal'}} key={'love_' + post.id}> {"　"+post.likeCount} ❤ </div>
+                <div style={{color: 'red', fontStyle: 'normal'}} key={'love_' + post.id}> {"　" + post.likeCount} ❤ </div>
               </div>
             </div>
             {post.media.map((imgData, index) =>
-              <div>
+              <div key={index + 1}>
                 <div key={imgData.url + index} style={styles.imageDiv}>
                   <a style={{display: 'flex'}} href={imgData.url} target="_blank">
                     <img style={styles.imageContainer} alt="" src={imgData.url} onLoad={(e) => this.handleImageLoad(e)} />

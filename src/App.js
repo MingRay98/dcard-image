@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import Radium, {StyleRoot} from 'radium';
-import {withRouter} from 'react-router-dom';
-import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, Link, Redirect} from 'react-router-dom';
 import AsyncImage from './component/image/async';
 import TopHeader from './component/header';
 import './App.css';
@@ -20,14 +19,6 @@ class App extends Component {
 
   getHomePage = () => {
     return <TopHeader />
-  }
-
-  getPages = () => {
-    return (
-      <Switch>
-        <Route path={`/dcard-image/`} render={(props) => <AsyncImage {...props} type={this.state.type} />} />
-      </Switch>
-    )
   }
 
   getTypes = (para) => {
@@ -49,7 +40,7 @@ class App extends Component {
 
   getRedirect = () => {
     if (this.state.redirect) {
-      return <Redirect to={`/dcard-image/`} />;
+      return <Redirect to={`/${this.state.type}/`} />;
     }
   }
 
@@ -132,7 +123,7 @@ class App extends Component {
                 {this.getNavbar()}
               </div>
               {this.getRedirect()}
-              {this.getPages()}
+              <AsyncImage type={this.state.type} />
             </div>
           </div>
         </StyleRoot>
